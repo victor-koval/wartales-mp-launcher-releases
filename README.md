@@ -45,8 +45,8 @@ Get-FileHash .\WartalesMP-Launcher.exe
    Версія має бути **однаковою в усіх гравців** — і тих, хто на Windows з лаунчером, теж.
 2. Перевірте файл: `sha256sum winmm.dll` у терміналі має збігтися з SHA256 у релізі мода.
 3. Покладіть `winmm.dll` у теку гри поруч із `Wartales.exe` (Steam → Wartales → «Керування» → «Переглянути локальні файли»).
-4. У Proton гра за замовчуванням бере вбудовану `winmm.dll`, тож мод треба ввімкнути в параметрах запуску
-   (Steam → Wartales → «Властивості» → «Параметри запуску»), як описано в інструкції автора. Зазвичай це:
+4. У Proton гра за замовчуванням бере вбудовану `winmm.dll`, і мод не запускається. Тому в Steam: правою кнопкою по Wartales →
+   «Властивості» → «Загальні» → «Параметри запуску» — і введіть:
 
    ```
    WINEDLLOVERRIDES="winmm=n,b" %command%
@@ -54,8 +54,8 @@ Get-FileHash .\WartalesMP-Launcher.exe
 
 5. Перед кожним оновленням мода скопіюйте теку `save` з теки гри — у Windows цю копію робить лаунчер.
 
-Оновлюється мод так само: новий `winmm.dll` на місце старого. Щоб вимкнути мод, приберіть параметр запуску
-або видаліть `winmm.dll`.
+Оновлюється мод так само: закрийте гру й покладіть новий `winmm.dll` на місце старого. Щоб вимкнути мод, приберіть параметр запуску
+або видаліть `winmm.dll`. Гравці на Proton можуть грати разом із гравцями на Windows.
 
 ---
 
@@ -106,8 +106,8 @@ following the author's instructions in the [mod README](https://github.com/UberM
    The version must be **the same for all players** — including those on Windows with the launcher.
 2. Check the file: `sha256sum winmm.dll` in a terminal must match the SHA256 in the mod release.
 3. Put `winmm.dll` into the game folder next to `Wartales.exe` (Steam → Wartales → “Manage” → “Browse local files”).
-4. Under Proton the game uses its built-in `winmm.dll` by default, so the mod has to be enabled in the launch options
-   (Steam → Wartales → “Properties” → “Launch options”), as described in the author's instructions. Usually it is:
+4. Under Proton the game uses its built-in `winmm.dll` by default, and the mod does not start. So in Steam: right-click Wartales →
+   “Properties” → “General” → “Launch options” — and enter:
 
    ```
    WINEDLLOVERRIDES="winmm=n,b" %command%
@@ -115,5 +115,5 @@ following the author's instructions in the [mod README](https://github.com/UberM
 
 5. Before every mod update, copy the `save` folder from the game folder — on Windows the launcher makes this backup.
 
-Updating works the same way: put the new `winmm.dll` in place of the old one. To disable the mod, remove the launch option
-or delete `winmm.dll`.
+Updating works the same way: close the game and put the new `winmm.dll` in place of the old one. To disable the mod, remove the launch option
+or delete `winmm.dll`. Proton players can play together with Windows players.
