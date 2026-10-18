@@ -1,5 +1,7 @@
 # Wartales-MP Launcher
 
+**Українською** · [English](#english)
+
 Лаунчер і інсталятор кооперативного мода [wartales-mp](https://github.com/UberMorgott/Wartales-Mod-wartales-mp) для Wartales.
 
 > Неофіційний проєкт. Не пов'язаний із Shiro Games чи автором мода.
@@ -54,3 +56,64 @@ Get-FileHash .\WartalesMP-Launcher.exe
 
 Оновлюється мод так само: новий `winmm.dll` на місце старого. Щоб вимкнути мод, приберіть параметр запуску
 або видаліть `winmm.dll`.
+
+---
+
+<a id="english"></a>
+
+## English
+
+Launcher and installer for the [wartales-mp](https://github.com/UberMorgott/Wartales-Mod-wartales-mp) co-op mod for Wartales.
+
+> Unofficial project. Not affiliated with Shiro Games or the mod author.
+
+### Download
+
+The latest version is on the [Releases](https://github.com/victor-koval/wartales-mp-launcher-releases/releases/latest) page: `WartalesMP-Launcher.exe`.
+Run it from any folder, no installation needed. After that the launcher updates itself.
+
+Requires .NET Framework 4.5+ — it is already included in Windows 10 and 11.
+
+### Features
+
+- Launches the game through Steam and shows which mod version it starts with.
+- Installs, updates, rolls back and removes the mod with SHA256 verification; installs new mod versions by itself.
+- Backs up your saves before every mod install; the “Save backups” window restores them.
+- “Stay on this version” — when your group agreed to play on one mod version.
+- Warns about versions the mod author asks not to use, and about game updates after the mod was installed.
+
+The interface is in Russian by default; English can be chosen in Settings (“Язык · Language”).
+
+### Windows SmartScreen warning
+
+The file has no digital signature, so on first launch Windows may show “Windows protected your PC”.
+Click “More info” → “Run anyway”.
+
+To check that the file is unchanged, run in PowerShell
+
+```powershell
+Get-FileHash .\WartalesMP-Launcher.exe
+```
+
+and compare the result with the SHA256 in the release notes.
+
+### Steam Deck and Linux
+
+The launcher only works on Windows. On Steam Deck, SteamOS and Linux (Proton) the mod is installed manually —
+following the author's instructions in the [mod README](https://github.com/UberMorgott/Wartales-Mod-wartales-mp#readme). In short:
+
+1. Download `winmm.dll` of the right version from the [mod releases](https://github.com/UberMorgott/Wartales-Mod-wartales-mp/releases).
+   The version must be **the same for all players** — including those on Windows with the launcher.
+2. Check the file: `sha256sum winmm.dll` in a terminal must match the SHA256 in the mod release.
+3. Put `winmm.dll` into the game folder next to `Wartales.exe` (Steam → Wartales → “Manage” → “Browse local files”).
+4. Under Proton the game uses its built-in `winmm.dll` by default, so the mod has to be enabled in the launch options
+   (Steam → Wartales → “Properties” → “Launch options”), as described in the author's instructions. Usually it is:
+
+   ```
+   WINEDLLOVERRIDES="winmm=n,b" %command%
+   ```
+
+5. Before every mod update, copy the `save` folder from the game folder — on Windows the launcher makes this backup.
+
+Updating works the same way: put the new `winmm.dll` in place of the old one. To disable the mod, remove the launch option
+or delete `winmm.dll`.
